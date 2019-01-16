@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{B21726D3-D7B2-4AB7-B818-600D11F2E5ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4E48EF83-48B2-4ADA-BA08-C6D348EA6A46}"
+	ProjectSection(SolutionItems) = preProject
+		notes.txt = notes.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B21726D3-D7B2-4AB7-B818-600D11F2E5ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B21726D3-D7B2-4AB7-B818-600D11F2E5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B21726D3-D7B2-4AB7-B818-600D11F2E5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B21726D3-D7B2-4AB7-B818-600D11F2E5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9F94762-2905-45F8-92CB-A6C790D59985}
+	EndGlobalSection
+EndGlobal

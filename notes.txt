@@ -1,0 +1,52 @@
+Database context is the base class that cootdinates the functional opportunities of the Entity Framework.
+It inherits from the class: Microsoft.EntityFrameworkCore.DbContext.
+In the code you specify the entities that you include in the data model.
+We can also customize some certain Entity Framework behaivior.
+	Entity set usually corresponds to a database table and entity to a table row
+
+The database context tracks whether the entities are sync with the corresponding rows in database table.
+These data defines what happens after calling the SaveChanges method.
+There are possible the following states:
+1. Added     ===> SaveChanges() ===> INSERT                                          // method .Add()
+2. Unchanged ===> ___nothing happens, that's the initial condition of an entity      
+3. Modified  ===> SaveChanges() ===> UPDATE                                          // method .Update()
+4. Deleted   ===> SaveChanges() ===> DELETE                                          // method .Remove()
+5. Detached  ===> ___the entity is not tracked by the context
+
+There are some ways that EF uploads the data in the navigation properties: 
+1. Eager loading: while reading an entity all related data is retrieved with along with it:
+	You can use methods .Include() and .ThenInclude() :: _context.Table1.Include(t => t.Table2).ThenInclude(t2 => t2.Table3) [?]
+	var departments = _context.Departments.Include(d => d.Courses); // That returns the department with included Courses property
+
+2. Explicit loading: when the entity is first read the data is not retrieved. You write the code if getting the related data is needed.
+	The difference between explicit and eager loading is that in explicit loading you explicitly specify the which navigation properties will be loaded.
+	You can use the method .Load() ::
+	var departments = _context.Department;
+	foreach (Department d in departments)
+	{
+		_context.Entry(d).Collection(p => p.Courses).Load();
+		foreach (Course c in d.Courses)
+		{
+			coursesList.Add(d.Name + c.Title);
+		}
+	}
+
+3. Lazy loading: While reading data for the first time the related data is not retrieved, however when you try to attemmpt to the navigation
+	property for the neccessary for that navigation property data is retrieved automaticly. The query to the database is sent each time
+	you try to get data from the navigation property for the first time. The EF Core 1.0 doesn't support lazy loading.
+
+
+Raw SQL queries:
+	1. DbSet.FromSql()
+	2. DbSet.ExecuteSqlCommand()
+
+Methods that cause automatic change detection: 
+	DbContext.SaveChanges()
+	DbContext.Entry()
+	ChangeTracker.Entries()
+
+	To switch off automatic change detection use the following method:
+		ChangeTracker.AutoDtecChangesEnabled(), for example:
+		_context.ChangeTracker.AutoDetectChangesE;nabled = false;
+
+	
